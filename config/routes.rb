@@ -13,6 +13,8 @@ Cycling::Application.routes.draw do
   resources :dashboards do
     collection do
       get 'cycles'
+      get 'completed'
+      get 'in_progress'
     end
   end
   

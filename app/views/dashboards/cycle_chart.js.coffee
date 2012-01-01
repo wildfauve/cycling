@@ -1,25 +1,30 @@
 options_cycle_time = {
-  chart: { 
-    renderTo: 'cycle_chart', 
-    defaultSeriesType: 'column'
+  chart: {  
+    type: 'column'
   },
-  title: { text: 'Cycle Time Average per Day' },
+  title: { text: "<%= @dim.title %>" },
   xAxis: {
     type: 'datetime',
   },
-  yAxis: { title: { text: 'Avg Cycle Time'}, min: 0 },
+  yAxis: { title: { text: "<%= @dim.y %> "}, min: 0 },
   tooltip: {
         formatter: ->
-          Highcharts.dateFormat("%B %Y", @x) + ': ' + Highcharts.numberFormat(@y, 0)
+          Highcharts.dateFormat("%d %B", @x) + ': ' + Highcharts.numberFormat(@y, 0)
+  },
+  plotOptions: {
+    column: {
+      pointPadding: 0.2,
+      borderWidth: 0
+    }
   },
   series: [{
     type: 'area',
-    name: 'Date Made',
+    name: "<%= @dim.x %> ",
     # 24hrs in milliseconds
     #pointInterval: 86400 * 1000,
     # milliseconds since the Epoch; in Ruby need Time.at(t/1000) to get this
     #pointStart: 1343174400000,
-    data: <%= raw Story.cycle_dimension %>
+    data: <%= raw @dim.data %>
   }]
 }
 

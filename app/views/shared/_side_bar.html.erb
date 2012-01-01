@@ -8,6 +8,9 @@
    Completed Stories: <%= Story.completed_count %>
 </div>
 <div class="panel">
+   In Progress Stories: <%= Story.in_progress_count %>
+</div>
+<div class="panel">
    Total Days: <%= Story.cycle_time(calc: :tot) %>
 </div>
 <div class="panel">
