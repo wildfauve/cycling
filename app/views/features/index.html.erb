@@ -1,0 +1,29 @@
+<% model_class = Feature %>
+<% title model_class.to_s %>
+<%= link_to "New Feature", new_feature_path, :class => "small button"%>
+<table>
+  <thead>
+    <tr>
+      <th >Ref</th>
+      <th width="400">Desc</th>
+      <th>Priority</th>
+      <th>Story Points</th>            
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+   <% for f in @features %>
+      <tr>
+         <td><%= f.ref%></td>
+         <td><%= f.desc %></td>
+         <td><%= f.priority%></td>
+         <td><%= f.story_points %></td>
+         <td>
+            <%= link_to 'Show', feature_path(f), :class => "tiny button"%>
+            <%= link_to 'Edit', edit_feature_path(f), :class => "tiny button"%>
+            <%= link_to 'Delete', feature_path(f), method: :delete, :class => "tiny button"%>          
+         </td>
+      </tr>
+   <% end %>
+   </tbody>
+</table>

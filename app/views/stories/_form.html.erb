@@ -1,0 +1,54 @@
+<%= form_for(@story) do |f| %>
+   <div class="row">
+     <div class="small-3 columns">
+       <%= f.label :ref, class: "right inline", title: "Story Ref", data: {tooltip: true } %>
+     </div>
+     <div class="small-9 columns">
+       <%= f.text_field :ref %>
+     </div>
+   </div>
+   <div class="row">
+     <div class="small-3 columns">
+       <%= f.label :desc, class: "right inline", title: "Story Ref", data: {tooltip: true } %>
+     </div>
+     <div class="small-9 columns">
+       <%= f.text_area :desc %>
+     </div>
+   </div>
+   <div class="row">
+     <div class="small-3 columns">
+       <%= f.label :start_date, class: "right inline", title: "Story Ref", data: {tooltip: true } %>
+     </div>
+     <div class="small-9 columns">
+       <%= f.text_field :start_date, :class => "date-picker" %>
+     </div>
+   </div>
+   <div class="row">
+     <div class="small-3 columns">
+       <%= f.label :end_date, class: "right inline", title: "Story Ref", data: {tooltip: true } %>
+     </div>
+     <div class="small-9 columns">
+       <%= f.text_field :end_date, :class => "date-picker" %>
+     </div>
+   </div>
+   <div class="row">
+     <div class="small-3 columns">
+         <%= label_tag :assigned_feat, "Feature", class: 'right inline' %>
+     </div>
+     <div class="small-9 columns">
+        <ul class="token-input-list">
+           <li class="token-input-input-token">
+              <%= text_field_tag :assigned_feature, nil, id: 'feature_tag', data: {pre: @story.feature_map} %>
+           </li>
+        </ul>
+
+     </div>
+   </div>
+
+   </br>
+   <div class="row">
+     <div class="small-9 small-offset-3 columns">
+       <%= f.submit :class => "button small"%>
+     </div>
+   </div>
+<% end %>
