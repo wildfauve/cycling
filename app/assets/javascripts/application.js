@@ -15,6 +15,8 @@
 //= require jquery.ui.datepicker
 //= require jquery.tokeninput
 //= require foundation
+//= require highcharts
+//= require highcharts/highcharts-more 
 //= require_tree .
 
 $(document).foundation();

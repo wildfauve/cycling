@@ -30,6 +30,7 @@ gem "mongoid", "~> 3.0.0"
 gem "origin", "~> 1.0.4"
 gem 'jquery-ui-rails'
 gem 'jquery-rails'
+gem "highcharts-rails", "~> 3.0.0"
 
 
 # To use ActiveModel has_secure_password

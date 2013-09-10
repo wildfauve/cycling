@@ -10,4 +10,10 @@ Cycling::Application.routes.draw do
     end
   end
   
+  resources :dashboards do
+    collection do
+      get 'cycles'
+    end
+  end
+  
 end

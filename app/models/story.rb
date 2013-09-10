@@ -39,18 +39,34 @@ class Story
     @@completed_count ||= self.completed_count
     @@completed ||= self.ne(end_date: nil)
     if args[:calc] == :avg
-      total_days = @@completed.inject(0) {|result, story| result += story.total_days}
-      total = total_days / @@completed_count
+      total = @@completed.inject(0) {|result, story| result += story.total_days} / @@completed_count
     elsif args[:calc] == :high
       total = @@completed.max {|a,b| a.total_days <=> b.total_days}.total_days
     elsif args[:calc] == :low
-      total = @@completed.min {|a,b| a.total_days <=> b.total_days}.total_days      
+      total = @@completed.min {|a,b| a.total_days <=> b.total_days}.total_days
+    elsif args[:calc] == :tot
+      total = @@completed.inject(0) {|result, story| result += story.total_days}
     end
     return total
     
   end
   
-  
+  def self.cycle_dimension
+    stories = self.ne(start_date: nil).collect {|story| {start_date: story.start_date, end_date: story.end_date, cycle_time: story.total_days}}
+    first_date = stories.min {|a,b| a[:start_date] <=> b[:start_date]}[:start_date]
+    last_date = stories.keep_if {|story| !story[:end_date].nil?}.max {|a,b| a[:end_date] <=> b[:end_date]}[:end_date]
+    stories.sort! {|a,b| a[:end_date] <=> b[:end_date] }
+    dim = []
+    (first_date..last_date).each do |date|
+      countable = stories.select {|story| story[:end_date] <= date}
+      if countable.count > 0
+        dim << [date.to_time.to_i * 1000, countable.inject(0.0) {|result, story| result += story[:cycle_time]} / countable.count ]
+      else
+        dim << [date.to_time.to_i * 1000, 0]
+      end
+    end
+    dim.to_json
+  end
   
   def update_it(params)
     self.attributes = (params[:story])

@@ -8,11 +8,15 @@
    Completed Stories: <%= Story.completed_count %>
 </div>
 <div class="panel">
+   Total Days: <%= Story.cycle_time(calc: :tot) %>
+</div>
+<div class="panel">
    Avg Cycle Time: <%= Story.cycle_time(calc: :avg) %>
 </div>
+
 <div class="panel">
    Highest Cycle Time: <%= Story.cycle_time(calc: :high) %>
 </div>
-<div class="panel center">
+<div class="panel">
    Lowest Cycle Time: <%= Story.cycle_time(calc: :low) %>
 </div>
