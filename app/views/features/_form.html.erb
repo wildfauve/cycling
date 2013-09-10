@@ -1,0 +1,41 @@
+<%= form_for(@feature) do |f| %>
+   <div class="row">
+     <div class="small-3 columns">
+       <%= f.label :ref, class: "right inline", title: "Feature Ref", data: {tooltip: true } %>
+     </div>
+     <div class="small-9 columns">
+       <%= f.text_field :ref %>
+     </div>
+   </div>
+   <div class="row">
+     <div class="small-3 columns">
+       <%= f.label :desc, class: "right inline", title: "Feature Description", data: {tooltip: true } %>
+     </div>
+     <div class="small-9 columns">
+       <%= f.text_area :desc %>
+     </div>
+   </div>
+   <div class="row">
+     <div class="small-3 columns">
+       <%= f.label :priority, class: "right inline", title: "M/C/S/W", data: {tooltip: true } %>
+     </div>
+     <div class="small-9 columns">
+       <%= f.text_field :priority %>
+     </div>
+   </div>
+   <div class="row">
+     <div class="small-3 columns">
+       <%= f.label :story_points, class: "right inline", title: "Size in Story Points", data: {tooltip: true } %>
+     </div>
+     <div class="small-9 columns">
+       <%= f.text_field :story_points %>
+     </div>
+   </div>
+
+   </br>
+   <div class="row">
+     <div class="small-9 small-offset-3 columns">
+       <%= f.submit :class => "button small"%>
+     </div>
+   </div>
+<% end %>

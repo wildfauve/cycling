@@ -46,6 +46,13 @@ class Feature
   def token_map
     {:id => _id, :name => ref} 
   end
+
+  def number_stories
+    self.stories.count
+  end
   
+  def total_cycle_time
+    self.stories.inject(0) {|result, story| result += story.total_days}
+  end
 
 end

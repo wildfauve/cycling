@@ -16,7 +16,7 @@ class Story
   
   def self.create_it(params)
     story = self.new(params[:story])
-    self.add_feature(params[:assigned_feature]) if params[:assigned_feature].present?    
+    story.add_feature(params[:assigned_feature]) if params[:assigned_feature].present?    
     story.save
     story
   end
@@ -31,6 +31,26 @@ class Story
     story.destroy_it
   end
 
+  def self.completed_count
+    self.ne(end_date: nil).count
+  end
+  
+  def self.cycle_time(args)
+    @@completed_count ||= self.completed_count
+    @@completed ||= self.ne(end_date: nil)
+    if args[:calc] == :avg
+      total_days = @@completed.inject(0) {|result, story| result += story.total_days}
+      total = total_days / @@completed_count
+    elsif args[:calc] == :high
+      total = @@completed.max {|a,b| a.total_days <=> b.total_days}.total_days
+    elsif args[:calc] == :low
+      total = @@completed.min {|a,b| a.total_days <=> b.total_days}.total_days      
+    end
+    return total
+    
+  end
+  
+  
   
   def update_it(params)
     self.attributes = (params[:story])

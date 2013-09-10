@@ -1,0 +1,18 @@
+<div class="panel callout">
+  Features: <%= Feature.all.count%>
+</div>
+<div class="panel callout">
+   Stories: <%= Story.all.count %>
+</div>
+<div class="panel">
+   Completed Stories: <%= Story.completed_count %>
+</div>
+<div class="panel">
+   Avg Cycle Time: <%= Story.cycle_time(calc: :avg) %>
+</div>
+<div class="panel">
+   Highest Cycle Time: <%= Story.cycle_time(calc: :high) %>
+</div>
+<div class="panel center">
+   Lowest Cycle Time: <%= Story.cycle_time(calc: :low) %>
+</div>

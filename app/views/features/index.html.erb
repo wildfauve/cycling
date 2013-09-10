@@ -7,7 +7,9 @@
       <th >Ref</th>
       <th width="400">Desc</th>
       <th>Priority</th>
-      <th>Story Points</th>            
+      <th> Est. Story Points</th>            
+      <th> # Stories</th>
+      <th> Tot Cycle Time</th>
       <th>Actions</th>
     </tr>
   </thead>
@@ -18,6 +20,8 @@
          <td><%= f.desc %></td>
          <td><%= f.priority%></td>
          <td><%= f.story_points %></td>
+         <td><%= f.number_stories %></td>
+         <td><%= f.total_cycle_time %></td>
          <td>
             <%= link_to 'Show', feature_path(f), :class => "tiny button"%>
             <%= link_to 'Edit', edit_feature_path(f), :class => "tiny button"%>
