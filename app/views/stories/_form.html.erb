@@ -25,12 +25,21 @@
    </div>
    <div class="row">
      <div class="small-3 columns">
+       <%= f.label :test_end_date, class: "right inline", title: "Date the story finished testing", data: {tooltip: true } %>
+     </div>
+     <div class="small-9 columns">
+       <%= f.text_field :test_end_date, :class => "date-picker" %>
+     </div>
+   </div>
+   <div class="row">
+     <div class="small-3 columns">
        <%= f.label :end_date, class: "right inline", title: "Story Ref", data: {tooltip: true } %>
      </div>
      <div class="small-9 columns">
        <%= f.text_field :end_date, :class => "date-picker" %>
      </div>
    </div>
+
    <div class="row">
      <div class="small-3 columns">
          <%= label_tag :assigned_feat, "Feature", class: 'right inline' %>

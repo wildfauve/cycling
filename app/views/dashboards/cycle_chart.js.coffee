@@ -1,18 +1,21 @@
 options_cycle_time = {
   chart: {  
-    type: 'column'
+    type: 'column',
+    inverted: false
   },
   title: { text: "<%= @dim.title %>" },
   xAxis: {
     type: 'datetime',
   },
-  yAxis: { title: { text: "<%= @dim.y %> "}, min: 0 },
+  yAxis: { 
+    title: { text: "<%= @dim.y %> "}, 
+    min: 0 },
   tooltip: {
         formatter: ->
           Highcharts.dateFormat("%d %B", @x) + ': ' + Highcharts.numberFormat(@y, 0)
   },
   plotOptions: {
-    column: {
+    bar: {
       pointPadding: 0.2,
       borderWidth: 0
     }

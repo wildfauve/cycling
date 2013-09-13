@@ -8,6 +8,7 @@ class Story
   field :ref, :type => String
   field :desc, :type => String
   field :start_date, :type => Date
+  field :test_end_date, type: Date
   field :end_date, :type => Date
   
   belongs_to :feature
@@ -34,6 +35,11 @@ class Story
   def self.completed_count
     self.ne(end_date: nil).count
   end
+
+  def self.test_completed_count
+    self.ne(test_end_date: nil).count
+  end
+  
   
   def self.cycle_time(args)
     @@completed_count ||= self.completed_count
@@ -57,7 +63,7 @@ class Story
               collect {|story| {start_date: story.start_date, end_date: story.end_date, cycle_time: story.total_days}}
     stories.sort! {|a,b| a[:end_date] <=> b[:end_date] }              
   end
-  
+      
   def self.in_progress_count
     self.ne(start_date: nil).where(end_date: nil).count
   end
