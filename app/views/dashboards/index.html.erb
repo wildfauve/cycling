@@ -1,7 +1,25 @@
 <div class="row">
-   <div class='small-10 columns'>
-   <%= link_to 'Cycle Time', cycles_dashboards_path, class: "button success", remote: true %>
-   <%= link_to 'Completed Count', completed_dashboards_path, class: "button success", remote: true %>   
-   <%= link_to 'In Progress Count', in_progress_dashboards_path, class: "button success", remote: true %>      
-   <div id="cycle_chart" </div>
+   <div class='small-3 columns'>
+      <h4 class="subheader">For End Date</h4>
+   </div>   
+   <div class='small-9 columns'>
+      <%= link_to 'Cycle Time', cycles_dashboards_path(start: :start_date, end: :end_date), class: "small button success", remote: true %>
+      <%= link_to 'Completed Count', completed_dashboards_path(start: :start_date, end: :end_date), class: "small button success", remote: true %>   
+      <%= link_to 'In Progress Count', in_progress_dashboards_path(start: :start_date, end: :end_date), class: "small button success", remote: true  %>      
+   </div>
+</div>
+<div class="row">
+   <div class='small-3 columns'>
+      <h4 class="subheader">For Test End Date</h4>
+   </div>   
+   <div class='small-9 columns'>
+      <%= link_to 'Cycle Time', cycles_dashboards_path(start: :start_date, end: :test_end_date), class: "small button success", remote: true %>
+      <%= link_to 'Completed Count', completed_dashboards_path(start: :start_date, end: :test_end_date), class: "small button success", remote: true %>   
+      <%= link_to 'In Progress Count', in_progress_dashboards_path(start: :start_date, end: :test_end_date), class: "small button success", remote: true %>      
+   </div>
+</div>
+<div class="row">
+   <div class='large-10 columns'>
+      <div id="cycle_chart" </div>
+   </div>
 </div>

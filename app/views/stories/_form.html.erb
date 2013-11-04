@@ -25,6 +25,23 @@
    </div>
    <div class="row">
      <div class="small-3 columns">
+       <%= f.label :dev_start_date, class: "right inline" %>
+     </div>
+     <div class="small-9 columns">
+       <%= f.text_field :dev_start_date, :class => "date-picker" %>
+     </div>
+   </div>
+   <div class="row">
+     <div class="small-3 columns">
+       <%= f.label :dev_end_date, class: "right inline" %>
+     </div>
+     <div class="small-9 columns">
+       <%= f.text_field :dev_end_date, :class => "date-picker" %>
+     </div>
+   </div>
+
+   <div class="row">
+     <div class="small-3 columns">
        <%= f.label :test_end_date, class: "right inline", title: "Date the story finished testing", data: {tooltip: true } %>
      </div>
      <div class="small-9 columns">
@@ -53,6 +70,21 @@
 
      </div>
    </div>
+
+   <div class="row">
+     <div class="small-3 columns">
+         <%= f.label :developers, "Developers", class: 'right inline' %>
+     </div>
+     <div class="small-9 columns">
+        <ul class="token-input-list">
+           <li class="token-input-input-token">
+              <%= f.text_field :dev_tags, id: 'dev_tag', data: {pre: @story.dev_map} %>
+           </li>
+        </ul>
+
+     </div>
+   </div>
+
 
    </br>
    <div class="row">

@@ -1,0 +1,27 @@
+<% model_class = Developer %>
+<% title model_class.to_s %>
+<%= link_to "New Dev", new_developer_path, :class => "small button"%>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Total Stories</th>
+      <th>Avg Cycle Time</th>      
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+   <% for d in @devs %>
+      <tr>
+         <td><%= d.name%></td>
+         <td><%= d.total_stories %></td>
+         <td><%= d.avg_cycle_time %></td>         
+         <td>
+            <%= link_to 'Show', developer_path(d), :class => "tiny button"%>
+            <%= link_to 'Edit', edit_developer_path(d), :class => "tiny button"%>
+            <%= link_to 'Delete', developer_path(d), method: :delete, :class => "tiny button"%>          
+         </td>
+      </tr>
+   <% end %>
+   </tbody>
+</table>

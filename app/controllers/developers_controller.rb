@@ -1,21 +1,21 @@
-class StoriesController < ApplicationController
+class DevelopersController < ApplicationController
   
   def index
-    @stories = Story.all.asc(:ref)
+    @devs = Developer.all.asc(:ref)
   end
   
   def show
   end
   
   def new
-    @story = Story.new
+    @dev = Developer.new
   end
   
   def create
-    @story = Story.create_it(params)
+    @dev = Developer.create_it(params)
     respond_to do |format|
-      if @story.valid?
-        format.html { redirect_to stories_path }
+      if @dev.valid?
+        format.html { redirect_to developers_path }
         format.json
       else
         format.html { render action: "new" }
@@ -26,14 +26,14 @@ class StoriesController < ApplicationController
   end
   
   def edit
-    @story = Story.find(params[:id])
+    @dev = Developer.find(params[:id])
   end
   
   def update
-    @story = Story.update_it(params)    
+    @dev = Developer.update_it(params)    
     respond_to do |format|
-      if @story.valid?
-        format.html { redirect_to stories_path }
+      if @dev.valid?
+        format.html { redirect_to developers_path }
         format.json
       else
         format.html { render action: "edit" }
@@ -43,10 +43,10 @@ class StoriesController < ApplicationController
   end
   
   def destroy
-    @story = Story.destroy_it(params)    
+    @dev = Developer.destroy_it(params)    
     respond_to do |format|
-      if @story.valid?
-        format.html { redirect_to stories_path }
+      if @dev.valid?
+        format.html { redirect_to developers_path }
         format.json
       else
         format.html { render action: "edit" }
@@ -55,10 +55,11 @@ class StoriesController < ApplicationController
     end          
   end
   
-  def export
+  def query
+    @dev_map = Developer.dev_map(params)
     respond_to do |format|
-      format.csv { render text: Story.to_csv }
-    end    
+      format.json { render :json => @dev_map }
+    end
   end
   
   

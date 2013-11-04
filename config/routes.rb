@@ -2,7 +2,20 @@ Cycling::Application.routes.draw do
 
   root to: 'stories#index'
 
-  resources :stories
+  namespace :api do
+    resources :stories do
+      collection do
+        post 'search'
+      end
+    end
+  end
+
+  resources :stories do
+    collection do
+      get 'export'
+    end
+  end
+  
   
   resources :features do
     collection do
@@ -15,6 +28,12 @@ Cycling::Application.routes.draw do
       get 'cycles'
       get 'completed'
       get 'in_progress'
+    end
+  end
+  
+  resources :developers do
+    collection do
+      get 'query'
     end
   end
   

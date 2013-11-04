@@ -1,13 +1,17 @@
 <% model_class = Story %>
 <% title model_class.to_s %>
 <%= link_to "New Story", new_story_path, :class => "small button"%>
+<%= link_to "To CSV", export_stories_path(params.merge(format: :csv)), class: "button small"%>
 <table>
   <thead>
     <tr>
       <th>Feature</th>
       <th width="100">Ref</th>
       <th width="400">Desc</th>
+      <th width="100">Developers</th>      
       <th width="100">Start Date</th>
+      <th width="100">Dev Start Date</th>
+      <th width="100">Dev End Date</th>
       <th width="100">Test End Date</th>
       <th width="100">End Date</th>
       <th>Total Days</th>            
@@ -20,7 +24,14 @@
          <td><span data-tooltip class="has-tip" title="<%= s.feature.desc if !s.feature.nil?%>"><%= s.feature.ref if !s.feature.nil?%></span></td>
          <td><%= s.ref%></td>
          <td><%= s.desc %></td>
+         <td>
+            <% for dev in s.developers %>
+               <%= dev.name%>
+            <% end %>
+         </td>
          <td><%= s.start_date%></td>
+         <td><%= s.dev_start_date %></td>
+         <td><%= s.dev_end_date %></td>
          <td><%= s.test_end_date %></td>
          <td><%= s.end_date %></td>
          <td><%= s.total_days %></td>
