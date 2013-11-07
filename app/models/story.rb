@@ -99,10 +99,10 @@ class Story
     self.where(ref: params[:ref]).first
   end
   
-  {"story"=>{"ref"=>"S85-01", "desc"=>"", 
-    "start_date="=>"", "dev_start_date="=>"25-09-2013", 
-    "dev_end_date="=>"25-09-2013", "test_end_date="=>nil, 
-    "end_date="=>nil}, "id"=>"522f91b0e4df1c3f91000003"}
+#  {"story"=>{"ref"=>"S85-01", "desc"=>"", 
+#    "start_date="=>"", "dev_start_date="=>"25-09-2013", 
+#    "dev_end_date="=>"25-09-2013", "test_end_date="=>nil, 
+#    "end_date="=>nil}, "id"=>"522f91b0e4df1c3f91000003"}
   
   def self.api_update(params)
     s = self.find(params[:id])

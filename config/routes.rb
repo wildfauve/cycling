@@ -16,7 +16,6 @@ Cycling::Application.routes.draw do
     end
   end
   
-  
   resources :features do
     collection do
       get 'query'

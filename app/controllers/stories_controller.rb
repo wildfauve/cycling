@@ -5,6 +5,11 @@ class StoriesController < ApplicationController
   end
   
   def show
+    @story = Story.find(params[:id])
+    respond_to do |f|
+      f.json 
+      f.html
+    end
   end
   
   def new
