@@ -1,7 +1,7 @@
 class Api::StoriesController < Api::ApplicationController
   
   def index
-    @story = Story.find_by_ref(params)
+    @stories = Story.all.asc(:ref)
   end
   
   def create

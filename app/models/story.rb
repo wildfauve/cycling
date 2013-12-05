@@ -36,8 +36,8 @@ class Story
     story.destroy_it
   end
 
-  def self.completed_count(story_list=self)
-    story_list.ne(end_date: nil).count
+  def self.completed_count(story_list=self, end_date=:end_date)
+    story_list.ne(end_date => nil).count
   end
 
   def self.test_completed_count
@@ -50,7 +50,7 @@ class Story
     range[:start] = :start_date if !range[:start]
     range[:end] = :end_date if !range[:end]
     args.has_key?(:stories) ? story_list = args[:stories] : story_list = self
-    completed_count = self.completed_count(story_list)
+    completed_count = self.completed_count(story_list, range[:end])
     completed = story_list.ne(range[:end] => nil)
     Rails.logger.info(">>>Story#cycle_time  #{story_list.count}, #{completed.count}")
     if args[:calc] == :avg

@@ -32,6 +32,9 @@ gem 'jquery-ui-rails'
 gem 'jquery-rails'
 gem "highcharts-rails", "~> 3.0.0"
 
+gem 'rest-client'
+gem 'flex-rails'
+
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
