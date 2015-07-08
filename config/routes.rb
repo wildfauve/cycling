@@ -5,7 +5,7 @@ Cycling::Application.routes.draw do
   namespace :api do
     resources :stories do
       collection do
-        post 'search'
+        get 'search'
       end
     end
   end

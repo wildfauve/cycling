@@ -1,5 +1,7 @@
 class Api::StoriesController < Api::ApplicationController
   
+  caches_action :search
+  
   def index
     @stories = Story.all.asc(:ref)
   end
@@ -27,6 +29,11 @@ class Api::StoriesController < Api::ApplicationController
   end
   
   def search
+    # Test JSON Return Size
+    @stories = Story.all
+    respond_to do |format|
+      format.json {render 'api/stories/size_test'}
+    end
   end
   
 end
